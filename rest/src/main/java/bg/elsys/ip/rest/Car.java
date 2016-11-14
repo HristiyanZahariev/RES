@@ -8,12 +8,12 @@ import java.awt.*;
 public class Car {
 
     private int id;
-    private String manufacture;
+    private Manufacture manufacture;
     private String model;
-    private String year;
-    private String color;
+    private int year;
+    private Color color;
 
-    public Car(int id, String manufacture, String model, String year, String color) {
+    public Car(int id, Manufacture manufacture, String model, int year, Color color) {
         this.id = id;
         this.manufacture = manufacture;
         this.model = model;
@@ -25,7 +25,7 @@ public class Car {
         return id;
     }
 
-    public String getManufacture() {
+    public Manufacture getManufacture() {
         return manufacture;
     }
 
@@ -33,12 +33,12 @@ public class Car {
         return model;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
@@ -47,7 +47,7 @@ public class Car {
         this.id = id;
     }
 
-    public void setManufacture(String manufacture) {
+    public void setManufacture(Manufacture manufacture) {
         this.manufacture = manufacture;
     }
 
@@ -55,12 +55,12 @@ public class Car {
         this.model = model;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
 
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 }
