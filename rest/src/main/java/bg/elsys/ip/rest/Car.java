@@ -21,6 +21,10 @@ public class Car {
         this.color = color;
     }
 
+    public Car() {
+
+    }
+
     public int getId() {
         return id;
     }

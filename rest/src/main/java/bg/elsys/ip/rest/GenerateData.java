@@ -2,8 +2,10 @@ package bg.elsys.ip.rest;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import static java.awt.Color.black;
 
@@ -12,35 +14,62 @@ import static java.awt.Color.black;
  */
 public class GenerateData {
 
+    private static GenerateData instance = null;
+
     private static final List<Car> cars = new ArrayList<>();
 
-    public static List getCars() {
-        for (int i = 1; i <= 10; i++) {
-            cars.add(new Car(i, getRandomManufacture(), "C220", getRandomYear(),getRandomColor() ));
+    protected GenerateData() {
+        initCars();
+    }
+
+    public static GenerateData getInstance() {
+        if (instance == null) {
+            instance = new GenerateData();
         }
+
+        return instance;
+    }
+
+    public void initCars() {
+        for (int i = 1; i <= 10; i++) {
+            cars.add(new Car(i, getRandomManufacture(), getRandomModel(), getRandomYear(), getRandomColor()));
+        }
+    }
+
+    public List getCars() {
         return cars;
     }
 
-    public static Manufacture getRandomManufacture() {
+    public Manufacture getRandomManufacture() {
         Manufacture[] manufcaturers = Manufacture.values();
         int idx = new Random().nextInt(manufcaturers.length); //copy pasta dis from http://stackoverflow.com/questions/13340516/random-element-from-string-array
         return manufcaturers[idx];
     }
 
-    public static int getRandomYear() {
+    public int getRandomYear() {
         Random rand = new Random();
-        int year = 0;
         int maxYear = 2016;
         int minYear = 1940;
         int range = maxYear - minYear;
 
-        return year = rand.nextInt(range) + minYear; //This will generate an year from 1940 to 2016
+        return rand.nextInt(range) + minYear; //This will generate an year from 1940 to 2016
     }
 
-    public static Color getRandomColor() {
+    public Color getRandomColor() {
         Color[] colors = Color.values();
         int idx = new Random().nextInt(colors.length);
         return colors[idx];
 
+    }
+
+
+    public String getRandomModel() {
+        int randomNumber = new Random().nextInt(100) + 1;
+        return "Model " + (char) ('A' + new Random().nextInt('Z' - 'A')) + randomNumber;
+
+    }
+
+    public boolean add(Car car) {
+        return cars.add(car);
     }
 }
