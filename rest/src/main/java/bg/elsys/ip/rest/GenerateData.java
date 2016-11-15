@@ -69,7 +69,17 @@ public class GenerateData {
 
     }
 
-    public boolean add(Car car) {
+    public boolean addNewCar(Car car) {
         return cars.add(car);
+
+    }
+
+    public Car findById(int id) {
+       for (Car car : cars) {
+           if (car.getId() == id)
+               return car;
+       }
+
+       return null;
     }
 }

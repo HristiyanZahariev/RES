@@ -21,9 +21,17 @@ public class CarResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN )
     public Response postCars(Car car) {
-        boolean addResult = GenerateData.getInstance().add(car);
+        boolean addResult = GenerateData.getInstance().addNewCar(car);
         return Response.ok(addResult).build();
     }
 
-    
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCarById(@PathParam("id") String id) {
+
+        int idx = Integer.parseInt(id);
+        return Response.status(200).entity(GenerateData.getInstance().findById(idx)).build();
+
+    }
 }
