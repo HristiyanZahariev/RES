@@ -19,10 +19,9 @@ public class CarResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN )
+    @Produces(MediaType.APPLICATION_JSON)
     public Response postCars(Car car) {
-        boolean addResult = GenerateData.getInstance().addNewCar(car);
-        return Response.ok(addResult).build();
+        return Response.ok(car).build();
     }
 
     @GET

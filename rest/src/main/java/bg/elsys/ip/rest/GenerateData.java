@@ -32,7 +32,7 @@ public class GenerateData {
 
     public void initCars() {
         for (int i = 1; i <= 10; i++) {
-            cars.add(new Car(i, getRandomManufacture(), getRandomModel(), getRandomYear(), getRandomColor()));
+            cars.add(new Car(getRandomManufacture(), getRandomModel(), getRandomYear(), getRandomColor()));
         }
     }
 

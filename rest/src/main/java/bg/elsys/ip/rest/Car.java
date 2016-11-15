@@ -12,9 +12,11 @@ public class Car {
     private String model;
     private int year;
     private Color color;
+    static int idCounter = 1;
 
-    public Car(int id, Manufacture manufacture, String model, int year, Color color) {
-        this.id = id;
+
+    public Car(Manufacture manufacture, String model, int year, Color color) {
+        this();
         this.manufacture = manufacture;
         this.model = model;
         this.year = year;
@@ -22,7 +24,7 @@ public class Car {
     }
 
     public Car() {
-
+        id = idCounter++;
     }
 
     public int getId() {

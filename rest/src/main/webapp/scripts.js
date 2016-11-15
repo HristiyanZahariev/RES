@@ -6,14 +6,7 @@ function getData() {
 		success: function(data) {
 			console.log(data);
 			$.each(data, function(index){
-				var tr = $('<tr>');
-				tr.append('<td>' + data[index].id + '</td>');
-				tr.append('<td>' + data[index].manufacture + '</td>');
-				tr.append('<td>' + data[index].model + '</td>');
-				tr.append('<td>' + data[index].year + '</td>');
-				tr.append('<td>' + data[index].color + '</td>');
-				tr.append('</tr>');
-				$('#carsTable').append(tr);
+				createCarInTable(data[index]);
 			});
 		}
 	});
@@ -28,12 +21,24 @@ function formToJSON() {
 		});
 }
 
-function addCar() {
+function createCarInTable(car) {
+		var tr = $('<tr>');
+		tr.append('<td>' + car.id + '</td>');
+		tr.append('<td>' + car.manufacture + '</td>');
+		tr.append('<td>' + car.model + '</td>');
+		tr.append('<td>' + car.year + '</td>');
+		tr.append('<td>' + car.color + '</td>');
+		tr.append('</tr>');
+		$('#carsTable').append(tr);
+}
+
+function registerForm() {
 	var form = $('.form-horizontal');
 	$(form).submit(function(event) {
 		// Stop the browser from submitting the form.
 		event.preventDefault();
 		var formData = formToJSON();
+		console.log("HELLOO");
 		$.ajax({
 			type: 'POST',
 			contentType: 'application/json',
@@ -41,22 +46,15 @@ function addCar() {
 			dataType: "json",
 			data: formToJSON(),
 			success: function(data) {
-				console.log(data);
-				$.each(data, function(index){
-					var tr = $('<tr>');
-					tr.append('<td>' + data[index].id + '</td>');
-					tr.append('<td>' + data[index].manufacture + '</td>');
-					tr.append('<td>' + data[index].model + '</td>');
-					tr.append('<td>' + data[index].year + '</td>');
-					tr.append('<td>' + data[index].color + '</td>');
-					tr.append('</tr>');
-					$('#carsTable').append(tr);
-				});
+				console.log("Yeah");
+				createCarInTable(data);
 			}
+
 		});
 	});
 }
 
 $(document).ready(function() {
 		getData();
+		registerForm();
 });
