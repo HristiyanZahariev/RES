@@ -8,14 +8,14 @@ import java.awt.*;
 public class Car {
 
     private int id;
-    private Manufacture manufacture;
+    private String manufacture;
     private String model;
     private int year;
-    private Color color;
+    private String color;
     static int idCounter = 1;
 
 
-    public Car(Manufacture manufacture, String model, int year, Color color) {
+    public Car(String manufacture, String model, int year, String color) {
         this();
         this.manufacture = manufacture;
         this.model = model;
@@ -31,7 +31,7 @@ public class Car {
         return id;
     }
 
-    public Manufacture getManufacture() {
+    public String getManufacture() {
         return manufacture;
     }
 
@@ -44,7 +44,7 @@ public class Car {
     }
 
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
@@ -53,7 +53,7 @@ public class Car {
         this.id = id;
     }
 
-    public void setManufacture(Manufacture manufacture) {
+    public void setManufacture(String manufacture) {
         this.manufacture = manufacture;
     }
 
@@ -66,7 +66,7 @@ public class Car {
     }
 
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 }

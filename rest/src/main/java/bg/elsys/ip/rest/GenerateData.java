@@ -40,10 +40,10 @@ public class GenerateData {
         return cars;
     }
 
-    public Manufacture getRandomManufacture() {
-        Manufacture[] manufcaturers = Manufacture.values();
-        int idx = new Random().nextInt(manufcaturers.length); //copy pasta dis from http://stackoverflow.com/questions/13340516/random-element-from-string-array
-        return manufcaturers[idx];
+    public String getRandomManufacture() {
+        String[] manufacturers = {"BMW", "Mercedes", "Vw", "Audi", "Opel", "Renault"};
+        int randomIndex = new Random().nextInt(manufacturers.length); //copi pasta from here: http://stackoverflow.com/questions/13340516/random-element-from-string-array
+        return manufacturers[randomIndex];
     }
 
     public int getRandomYear() {
@@ -55,10 +55,10 @@ public class GenerateData {
         return rand.nextInt(range) + minYear; //This will generate an year from 1940 to 2016
     }
 
-    public Color getRandomColor() {
-        Color[] colors = Color.values();
-        int idx = new Random().nextInt(colors.length);
-        return colors[idx];
+    public String getRandomColor() {
+        String[] colors = {"white", "blue", "black", "yellow", "green", "gray"};
+        int randomIndex = new Random().nextInt(colors.length);
+        return colors[randomIndex];
 
     }
 
