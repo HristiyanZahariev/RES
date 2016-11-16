@@ -1,5 +1,6 @@
 package bg.elsys.ip.rest;
 
+import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -32,5 +33,13 @@ public class CarResource {
         int idx = Integer.parseInt(id);
         return Response.status(200).entity(GenerateData.getInstance().findById(idx)).build();
 
+    }
+
+    //If implementing a dropdown menu
+    @Path("/names")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<String> getAllDistinctCarManufacturers() {
+        return GenerateData.getInstance().getAllDistinctNames();
     }
 }

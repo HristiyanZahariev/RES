@@ -65,13 +65,20 @@ public class GenerateData {
 
     public String getRandomModel() {
         int randomNumber = new Random().nextInt(100) + 1;
-        return "(char) ('A' + new Random().nextInt('Z' - 'A')) + randomNumber";
+        return "" + (char) ('A' + new Random().nextInt('Z' - 'A')) + randomNumber;
 
     }
 
     public boolean addNewCar(Car car) {
         return cars.add(car);
 
+    }
+
+    public List<String> getAllDistinctNames() {
+        return cars.stream()
+                .map((u) -> u.getManufacture())
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     public Car findById(int id) {
