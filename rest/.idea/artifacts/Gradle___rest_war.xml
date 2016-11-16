@@ -5,10 +5,10 @@
       <options external-project-path="$PROJECT_DIR$" />
     </properties>
     <root id="archive" name="rest.war">
-      <element id="javaee-facet-resources" facet="rest/web/Web Gradle : rest.war" />
+      <element id="javaee-facet-resources" facet="rest_main/web/Web Gradle : rest.war" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="rest" />
+          <element id="module-output" name="rest_main" />
           <element id="dir-copy" path="$PROJECT_DIR$/build/resources/main" />
         </element>
         <element id="directory" name="lib">
