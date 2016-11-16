@@ -14,7 +14,7 @@ function getData() {
 
 function formToJSON() {
 	return JSON.stringify({
-		"manufacture": $('#manufacture').val(),
+		"manufacture": $('#manufacturers').val(),
 		"model": $('#model').val(),
 		"year": $('#year').val(),
 		"color": $('#color').val(),
@@ -61,10 +61,10 @@ function getCarNames() {
 		success: function (data) {
 			$.each(data, function(index, element) {
 				var select = $('#manufacturers')
-				select.append($('<option></option>')
-						.attr("value",element)
-						.text(element))
-				console.log("Bumyes");
+				select.append('<option value="'+ element +'">'+ element +'</option>');
+						// .attr("value", element)
+						// .text(element))
+				console.log(element.toString());
 			});
 		}
 	});
