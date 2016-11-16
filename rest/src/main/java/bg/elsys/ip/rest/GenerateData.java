@@ -65,7 +65,7 @@ public class GenerateData {
 
     public String getRandomModel() {
         int randomNumber = new Random().nextInt(100) + 1;
-        return "Model " + (char) ('A' + new Random().nextInt('Z' - 'A')) + randomNumber;
+        return "(char) ('A' + new Random().nextInt('Z' - 'A')) + randomNumber";
 
     }
 

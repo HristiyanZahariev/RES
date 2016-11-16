@@ -37,7 +37,6 @@ function registerForm() {
 	$(form).submit(function(event) {
 		// Stop the browser from submitting the form.
 		event.preventDefault();
-		var formData = formToJSON();
 		console.log("HELLOO");
 		$.ajax({
 			type: 'POST',
