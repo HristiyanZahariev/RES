@@ -18,18 +18,18 @@ function formToJSON() {
 		"model": $('#model').val(),
 		"year": $('#year').val(),
 		"color": $('#color').val(),
-		});
+	});
 }
 
 function createCarInTable(car) {
-		var tr = $('<tr>');
-		tr.append('<td>' + car.id + '</td>');
-		tr.append('<td>' + car.manufacture + '</td>');
-		tr.append('<td>' + car.model + '</td>');
-		tr.append('<td>' + car.year + '</td>');
-		tr.append('<td>' + car.color + '</td>');
-		tr.append('</tr>');
-		$('#carsTable').append(tr);
+	var tr = $('<tr>');
+	tr.append('<td>' + car.id + '</td>');
+	tr.append('<td>' + car.manufacture + '</td>');
+	tr.append('<td>' + car.model + '</td>');
+	tr.append('<td>' + car.year + '</td>');
+	tr.append('<td>' + car.color + '</td>');
+	tr.append('</tr>');
+	$('#carsTable').append(tr);
 }
 
 function registerForm() {
@@ -53,7 +53,25 @@ function registerForm() {
 	});
 }
 
+function getCarNames() {
+	$.ajax({
+		url: "http://localhost:8080/rest/api/cars/names",
+		type: "GET",
+		dataType: "json",
+		success: function (data) {
+			$.each(data, function(index, element) {
+				var select = $('#manufacturers')
+				select.append($('<option></option>')
+						.attr("value",element)
+						.text(element))
+				console.log("Bumyes");
+			});
+		}
+	});
+}
+
 $(document).ready(function() {
-		getData();
-		registerForm();
+	getData();
+	getCarNames();
+	registerForm();
 });

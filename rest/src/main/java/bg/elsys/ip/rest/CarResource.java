@@ -22,7 +22,8 @@ public class CarResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response postCars(Car car) {
-        return Response.ok(GenerateData.getInstance().addNewCar(car)).build();
+        GenerateData.getInstance().addNewCar(car);
+        return Response.ok(car).build();
     }
 
     @GET
@@ -40,6 +41,6 @@ public class CarResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<String> getAllDistinctCarManufacturers() {
-        return GenerateData.getInstance().getAllDistinctNames();
+        return GenerateData.getInstance().getAllManufacturersNames();
     }
 }

@@ -74,7 +74,7 @@ public class GenerateData {
 
     }
 
-    public List<String> getAllDistinctNames() {
+    public List<String> getAllManufacturersNames() {
         return cars.stream()
                 .map((u) -> u.getManufacture())
                 .distinct()
