@@ -22,7 +22,7 @@ public class CarResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response postCars(Car car) {
-        return Response.ok(car).build();
+        return Response.ok(GenerateData.getInstance().addNewCar(car)).build();
     }
 
     @GET
