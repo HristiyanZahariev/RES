@@ -40,7 +40,7 @@ public class CarResource {
     @Path("/names")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<String> getAllDistinctCarManufacturers() {
-        return GenerateData.getInstance().getAllManufacturersNames();
+    public Response getAllDistinctCarManufacturers() {
+        return Response.ok(GenerateData.getInstance().getAllManufacturersNames()).build();
     }
 }

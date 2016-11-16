@@ -4,53 +4,59 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript" src="scripts.js"></script>
 	<title>Insert title here</title>
 </head>
 <body>
-	<table id="carsTable"></table>
-	<form class="form-horizontal">
-		<fieldset>
-			<!-- Manufacture input-->
-			<div class="form-group">
-				<div class="col-md-4">
-					<label>Enter a manufacturer</label>
-					</br>
-					<select id="manufacturers">
-					</select>
-				</div>
-			</div>
+	<table id="carsTable">
+		<tr>
+			<th>Id</th>
+			<th>Manufacture</th>
+			<th>Model</th>
+			<th>Year</th>
+			<th>Color</th>
+		</tr>
+	</table>
+	<div class="conteiner">
+        <form class="form-horizontal">
+            <fieldset>
+                <!-- Manufacture input-->
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>Enter a manufacturer</label>
+                        <select id="manufacturers">
+                        </select>
+                    </div>
+                </div>
 
-			<!-- Model input-->
-			<div class="form-group">
-				<div class="col-md-4">
-                    <label>Enter a model</label>
-					</br>
-					<input id="model" name="model" type="text" placeholder="Enter a model" class="form-control input-md">
+                <!-- Model input-->
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>Enter a model</label>
+                        <input id="model" name="model" type="text" placeholder="Enter a model" class="form-control input-md">
 
-				</div>
-			</div>
+                    </div>
+                </div>
 
-			<!-- Year input-->
-			<div class="form-group">
-				<div class="col-md-4">
-					<label>Enter an year</label>
-					<br>
-					<input id="year" name="yaer" type="number" min="1940" max="2016" placeholder="Enter an year (from 1940 - 2016)" class="form-control input-md">
-				</div>
-			</div>
+                <!-- Year input-->
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>Enter an year</label>
+                        <input id="year" name="yaer" type="number" min="1940" max="2016" placeholder="Enter an year (from 1940 - 2016)" class="form-control input-md">
+                    </div>
+                </div>
 
-			<!-- Color input-->
-			<div class="form-group">
-				<div class="col-md-4">
-					<label>Enter a color</label>
-					<input id="color" name="color" type="text" placeholder="Enter a color" class="form-control input-md">
-				</div>
-			</div>
-			<input type="submit" value="Submit">
-		</fieldset>
-	</form>
-
-
+                <!-- Color input-->
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label>Enter a color</label>
+                        <input id="color" name="color" type="text" placeholder="Enter a color" class="form-control input-md">
+                    </div>
+                </div>
+                <input type="submit" value="Submit">
+            </fieldset>
+        </form>
+	</div>
 </body>
 </html>

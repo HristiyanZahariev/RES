@@ -1,4 +1,4 @@
-function getData() {
+function mockData() {
 	$.ajax({
 		url: "http://localhost:8080/rest/api/cars",
 		type: "GET",
@@ -20,6 +20,7 @@ function formToJSON() {
 		"color": $('#color').val(),
 	});
 }
+
 
 function createCarInTable(car) {
 	var tr = $('<tr>');
@@ -64,14 +65,14 @@ function getCarNames() {
 				select.append('<option value="'+ element +'">'+ element +'</option>');
 						// .attr("value", element)
 						// .text(element))
-				console.log(element.toString());
 			});
 		}
 	});
 }
 
 $(document).ready(function() {
-	getData();
+	mockData();
 	getCarNames();
 	registerForm();
+
 });
