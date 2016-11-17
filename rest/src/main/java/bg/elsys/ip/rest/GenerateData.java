@@ -16,7 +16,7 @@ public class GenerateData {
 
     private static GenerateData instance = null;
 
-    private static final List<Car> cars = new ArrayList<>();
+    private static List<Car> cars = new ArrayList<>();
 
     protected GenerateData() {
         initCars();

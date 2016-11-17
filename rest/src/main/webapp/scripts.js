@@ -14,7 +14,7 @@ function mockData() {
 
 function formToJSON() {
 	return JSON.stringify({
-		"manufacture": $('#manufacturers').val(),
+		"manufacture": $('#manufacture').val(),
 		"model": $('#model').val(),
 		"year": $('#year').val(),
 		"color": $('#color').val(),
@@ -54,25 +54,25 @@ function registerForm() {
 	});
 }
 
-function getCarNames() {
-	$.ajax({
-		url: "http://localhost:8080/rest/api/cars/names",
-		type: "GET",
-		dataType: "json",
-		success: function (data) {
-			$.each(data, function(index, element) {
-				var select = $('#manufacturers')
-				select.append('<option value="'+ element +'">'+ element +'</option>');
-						// .attr("value", element)
-						// .text(element))
-			});
-		}
-	});
-}
+// function getCarNames() {
+// 	$.ajax({
+// 		url: "http://localhost:8080/rest/api/cars/names",
+// 		type: "GET",
+// 		dataType: "json",
+// 		success: function (data) {
+// 			$.each(data, function(index, element) {
+// 				var select = $('#manufacturers')
+// 				select.append('<option value="'+ element +'">'+ element +'</option>');
+// 						// .attr("value", element)
+// 						// .text(element))
+// 			});
+// 		}
+// 	});
+// }
 
 $(document).ready(function() {
+	//getCarNames();
 	mockData();
-	getCarNames();
 	registerForm();
 
 });
