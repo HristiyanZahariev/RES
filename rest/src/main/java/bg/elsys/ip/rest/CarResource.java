@@ -15,14 +15,14 @@ public class CarResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCars() {
-        return Response.ok(GenerateData.getCars()).build();
+        return Response.ok(GenerateData.getInstance().getCars()).build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response postCars(Car car) {
-        GenerateData.addNewCar(car);
+        GenerateData.getInstance().addNewCar(car);
         return Response.ok(car).build();
     }
 
@@ -32,7 +32,7 @@ public class CarResource {
     public Response getCarById(@PathParam("id") String id) {
 
         int idx = Integer.parseInt(id);
-        return Response.status(200).entity(GenerateData.findById(idx)).build();
+        return Response.status(200).entity(GenerateData.getInstance().findById(idx)).build();
 
     }
 
@@ -41,6 +41,6 @@ public class CarResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllDistinctCarManufacturers() {
-        return Response.ok(GenerateData.getAllManufacturersNames()).build();
+        return Response.ok(GenerateData.getInstance().getAllManufacturersNames()).build();
     }
 }
