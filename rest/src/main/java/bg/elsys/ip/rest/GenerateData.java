@@ -28,8 +28,11 @@ public class GenerateData {
     }
 
     public void initCars() {
-        for (int i = 1; i <= 10; i++) {
-            cars.add(new Car(getRandomManufacture(), getRandomModel(), getRandomYear(), getRandomColor()));
+        for (int i = 0; i <= 10; i++) {
+            cars.add(new Car(getRandomManufacture(),
+                            getRandomModel(),
+                            getRandomYear(),
+                            getRandomColor()));
         }
     }
 
@@ -37,8 +40,16 @@ public class GenerateData {
         return cars;
     }
 
+    public List<Car> filterCars(String manufacturer, String model, Integer year, String color) {
+        List<Car> filteredCars = cars.stream().filter(car -> car.getManufacture().equals(manufacturer) || manufacturer == "" || manufacturer == null)
+                .filter(car -> car.getModel().equals(model) || model == "" || model == null)
+                .filter(car -> car.getColor().equals(color) || color == "" || color == null)
+                .collect(Collectors.toList());
+        return filteredCars;
+    }
+
     public String getRandomManufacture() {
-        String[] manufacturers = {"BMW", "Mercedes", "Vw", "Audi", "Opel", "Renault"};
+        String[] manufacturers = {"BMW", "Mercedes", "Tesla", "Gazka", "Vw", "Audi", "Opel", "Renault"};
         int randomIndex = new Random().nextInt(manufacturers.length); //copi pasta from here: http://stackoverflow.com/questions/13340516/random-element-from-string-array
         return manufacturers[randomIndex];
     }

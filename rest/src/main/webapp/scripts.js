@@ -1,4 +1,4 @@
-function mockData() {
+function generateData() {
 	$.ajax({
 		url: "http://localhost:8080/rest/api/cars",
 		type: "GET",
@@ -12,7 +12,7 @@ function mockData() {
 	});
 }
 
-function formToJSON() {
+function inputFormToJSON() {
 	return JSON.stringify({
 		"manufacture": $('#manufacture').val(),
 		"model": $('#model').val(),
@@ -21,6 +21,14 @@ function formToJSON() {
 	});
 }
 
+// function filterToJSON() {
+// 	return JSON.stringify({
+//         "manufacture" : $('#manufacturersFilter').val(),
+//         "model" : $('#modelFilter').val(),
+//         "year" : $('#yearFilter').val(),
+//         "color" : $('#colorFilter').val()
+// 	});
+// }
 
 function createCarInTable(car) {
 	var tr = $('<tr>');
@@ -31,6 +39,21 @@ function createCarInTable(car) {
 	tr.append('<td>' + car.color + '</td>');
 	tr.append('</tr>');
 	$('#carsTable').append(tr);
+}
+
+function loadFilters() {
+	$.ajax({
+			url: "http://localhost:8080/rest/api/cars",
+			type: "GET",
+			dataType: "json",
+			data: filterToJSON(),
+			success: function(data) {
+				$.each(data, function(index) {
+					createCarInTable(data[index]);
+				});
+			}
+		}
+	);
 }
 
 function registerForm() {
@@ -44,7 +67,7 @@ function registerForm() {
 			contentType: 'application/json',
 			url: "http://localhost:8080/rest/api/cars",
 			dataType: "json",
-			data: formToJSON(),
+			data: inputFormToJSON(),
 			success: function(data) {
 				console.log("Yeah");
 				createCarInTable(data);
@@ -54,25 +77,27 @@ function registerForm() {
 	});
 }
 
-// function getCarNames() {
-// 	$.ajax({
-// 		url: "http://localhost:8080/rest/api/cars/names",
-// 		type: "GET",
-// 		dataType: "json",
-// 		success: function (data) {
-// 			$.each(data, function(index, element) {
-// 				var select = $('#manufacturers')
-// 				select.append('<option value="'+ element +'">'+ element +'</option>');
-// 						// .attr("value", element)
-// 						// .text(element))
-// 			});
-// 		}
-// 	});
-// }
+function getCarNames() {
+	$.ajax({
+		url: "http://localhost:8080/rest/api/cars/names",
+		type: "GET",
+		dataType: "json",
+		success: function (data) {
+			$.each(data, function(key, value) {
+				$('#manufacturersFilter')
+					.append($('<option>', { value : key })
+						.text(value));
+			});
+		}
+	});
+}
 
 $(document).ready(function() {
-	//getCarNames();
-	mockData();
+	getCarNames();
+	generateData();
 	registerForm();
+	$('#manufacturersFilter').change(function() {
+		loadFilters();
+	});
 
 });

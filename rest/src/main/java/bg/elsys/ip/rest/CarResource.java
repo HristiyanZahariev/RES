@@ -14,8 +14,14 @@ import java.util.List;
 public class CarResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCars() {
-        return Response.ok(GenerateData.getInstance().getCars()).build();
+    public Response getCars(
+            @QueryParam("manufacture") String manufacturer,
+            @QueryParam("model") String model,
+            @QueryParam("year") Integer year,
+            @QueryParam("color") String color) {
+
+        return Response.ok(GenerateData.getInstance().filterCars(manufacturer, model, year, color)).build();
+        //return Response.ok(GenerateData.getInstance().getCars()).build();
     }
 
     @POST
@@ -43,4 +49,7 @@ public class CarResource {
     public Response getAllDistinctCarManufacturers() {
         return Response.ok(GenerateData.getInstance().getAllManufacturersNames()).build();
     }
+
+
+
 }
