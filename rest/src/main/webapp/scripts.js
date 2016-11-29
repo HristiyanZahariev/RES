@@ -22,30 +22,30 @@ function createCarInTable(car) {
 }
 
 function removeTable() {
-    $('#carsTableBody tr').remove();
-    currPage = 1;
+	$('#carsTableBody tr').remove();
+	currPage = 1;
 }
 
 function loadFiltersAndGenerateData() {
 	$.ajax({
-        url: "http://localhost:8080/rest/api/cars",
-        type: "GET",
-        dataType: "json",
-        contentType: "text/plain",
-        data: {
-            carsPerPage : carsPerPage,
-            currentPage : currPage,
-            "manufacture" : $('#manufactureFilter').val(),
-            "model" : $('#modelFilter').val(),
-            "year" : $('#yearFilter').val(),
-            "color" : $('#colorFilter').val()
-        },
-        success: function(data) {
-            currPage++;
-            $.each(data, function(index) {
-                createCarInTable(data[index]);
-            });
-        }
+			url: "http://localhost:8080/rest/api/cars",
+			type: "GET",
+			dataType: "json",
+			contentType: "text/plain",
+			data: {
+				carsPerPage : carsPerPage,
+				currentPage : currPage,
+				"manufacture" : $('#manufactureFilter').val(),
+				"model" : $('#modelFilter').val(),
+				"year" : $('#yearFilter').val(),
+				"color" : $('#colorFilter').val()
+			},
+			success: function(data) {
+				currPage++;
+				$.each(data, function(index) {
+					createCarInTable(data[index]);
+				});
+			}
 		}
 	);
 }
@@ -65,7 +65,7 @@ function registerForm() {
 			success: function(data) {
 				console.log("Yeah");
 				//createCarInTable(data);
-				currPage = currPage - 2;
+				//currPage = currPage - 2;
 			}
 
 		});
