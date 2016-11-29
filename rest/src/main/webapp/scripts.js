@@ -51,8 +51,12 @@ function createCarInTable(car) {
 	$('#carsTableBody').append(tr);
 }
 
-function	 loadFiltersAndGenerateData() {
-    //console.log($('#manufacturersFilter').val());
+function removeTable() {
+    $('#carsTableBody tr').remove();
+    currPage = 1;
+}
+
+function loadFiltersAndGenerateData() {
 	$.ajax({
 			url: "http://localhost:8080/rest/api/cars",
 			type: "GET",
@@ -61,7 +65,7 @@ function	 loadFiltersAndGenerateData() {
 			data: {
 				carsPerPage : carsPerPage,
 				currentPage : currPage,
-				"manufacture" : $('#manufacturersFilter').val(),
+				"manufacture" : $('#manufactureFilter').val(),
 				"model" : $('#modelFilter').val(),
 				"year" : $('#yearFilter').val(),
 				"color" : $('#colorFilter').val()
@@ -97,17 +101,21 @@ function registerForm() {
 	});
 }
 
+function fillDropdown(data, dropdown) {
+	$.each(data, function (key, val) {
+		$(dropdown)
+			.append($('<option>', {value : val})
+				.text(val));
+	});
+}
+
 function getCarNames() {
 	$.ajax({
 		url: "http://localhost:8080/rest/api/cars/names",
 		type: "GET",
 		dataType: "json",
 		success: function (data) {
-			$.each(data, function(key, val) {
-				$('#manufacturersFilter')
-					.append($('<option>', { value : val })
-						.text(val));
-			});
+			fillDropdown(data, '#manufactureFilter')
 		}
 	});
 }
@@ -118,11 +126,7 @@ function getCarModels() {
 		type: "GET",
 		dataType: "json",
 		success: function (data) {
-			$.each(data, function (key, val) {
-				$('#modelFilter')
-					.append($('<option>', {value : val })
-						.text(val));
-			});
+			fillDropdown(data, '#modelFilter')
 		}
 	});
 }
@@ -133,7 +137,7 @@ function getCarYears() {
 		url: "http://localhost:8080/rest/api/cars/years",
 		type: "GET",
 		dataType: "json",
-		success: function (data) {
+		success: function ()	 {
 			var option='';
 			for (var i=1940; i <= 2016; i++){
 				option += '<option value="'+ i + '">' + i + '</option>'; //copi pasta from http://stackoverflow.com/questions/3446069/populate-dropdown-select-with-array-using-jquery
@@ -150,11 +154,7 @@ function getCarColors() {
 		type: "GET",
 		dataType: "json",
 		success: function (data) {
-			$.each(data, function (key, val) {
-				$('#colorFilter')
-					.append($('<option>', {value : val })
-						.text(val));
-			});
+			fillDropdown(data, '#colorFilter')
 		}
 	});
 }
@@ -173,27 +173,23 @@ $(document).ready(function() {
 	getCarColors();
 	loadFiltersAndGenerateData();
 
-	$('#manufacturersFilter').change(function() {
-		$('#carsTableBody tr').remove();
-		currPage = 1;
+	$('#manufactureFilter').change(function() {
+		removeTable();
 		loadFiltersAndGenerateData();
 	});
 
 	$('#modelFilter').change(function () {
-		$('#carsTableBody tr').remove();
-		currPage = 1;
+		removeTable();
 		loadFiltersAndGenerateData();
 	});
 
 	$('#yearFilter').change(function () {
-		$('#carsTableBody tr').remove();
-		currPage = 1;
+		removeTable();
 		loadFiltersAndGenerateData();
 	});
 
 	$('#colorFilter').change(function () {
-		$('#carsTableBody tr').remove();
-		currPage = 1;
+		removeTable();
 		loadFiltersAndGenerateData();
 	});
 });
