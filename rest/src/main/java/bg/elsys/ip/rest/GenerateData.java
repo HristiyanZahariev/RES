@@ -28,7 +28,7 @@ public class GenerateData {
     }
 
     public void initCars() {
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 1; i <= 100; i++) {
             cars.add(new Car(getRandomManufacture(),
                             getRandomModel(),
                             getRandomYear(),
@@ -40,12 +40,14 @@ public class GenerateData {
         return cars;
     }
 
-    public List<Car> filterCars(String manufacturer, String model, Integer year, String color) {
-        List<Car> filteredCars = cars.stream().filter(car -> car.getManufacture().equals(manufacturer) || manufacturer == "" || manufacturer == null)
-                .filter(car -> car.getModel().equals(model) || model == "" || model == null)
-                .filter(car -> car.getColor().equals(color) || color == "" || color == null)
+    public List<Car> filterCars(String manufacturer, String model, Integer year, String color, Integer currPage, Integer carsPerPage) {
+        List<Car> filteredCars = cars.stream().filter(car -> car.getManufacture().equals(manufacturer) || ("").equals(manufacturer) || manufacturer == null)
+                .filter(car -> car.getModel().equals(model) || "".equals(model) || model == null)
+                .filter(car -> year == null || car.getYear() == year || ("").equals(year))
+                .filter(car -> car.getColor().equals(color) || "".equals(color) || color == null)
                 .collect(Collectors.toList());
-        return filteredCars;
+        System.out.println(carsPerPage);
+        return filteredCars.subList(Math.min((currPage-1)*carsPerPage, filteredCars.size()), Math.min(currPage*carsPerPage, filteredCars.size()));
     }
 
     public String getRandomManufacture() {
@@ -71,8 +73,8 @@ public class GenerateData {
     }
 
     public String getRandomModel() {
-        int randomNumber = new Random().nextInt(100) + 1;
-        return "" + (char) ('A' + new Random().nextInt('Z' - 'A')) + randomNumber;
+        //int randomNumber = new Random().nextInt(100) + 1;
+        return "" + (char) ('A' + new Random().nextInt('Z' - 'A'));
 
     }
 
@@ -84,6 +86,27 @@ public class GenerateData {
     public List<String> getAllManufacturersNames() {
         return cars.stream()
                 .map((u) -> u.getManufacture())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getAllModelNames() {
+        return cars.stream()
+                .map((c) -> c.getModel())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> getAllYears() {
+        return cars.stream()
+                .map((c) -> c.getYear())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getAllColors() {
+        return cars.stream()
+                .map((c) -> c.getColor())
                 .distinct()
                 .collect(Collectors.toList());
     }

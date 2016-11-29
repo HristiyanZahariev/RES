@@ -8,29 +8,6 @@
 	<script type="text/javascript" src="scripts.js"></script>
 	<title>Insert title here</title>
 </head>
-<body>
-	<table id="carsTable">
-		<tr>
-			<th>Id</th>
-			<th>Manufacture</th>
-			<th>Model</th>
-			<th>Year</th>
-			<th>Color</th>
-		</tr>
-	</table>
-
-    <div class="filtters">
-
-        <select id="manufacturersFilter">
-        </select>
-
-        <select id="modelFilter"></select>
-
-        <select id="yearFilter"></select>
-
-        <select id="colorFilter"></select>
-    </div>
-
 	<div class="conteiner">
         <form class="form-horizontal">
             <fieldset>
@@ -70,5 +47,39 @@
             </fieldset>
         </form>
 	</div>
+    <div class="filtters">
+
+        <select id="manufacturersFilter">
+            <option value="">All Manufactures</option>
+        </select>
+
+        <select id="modelFilter">
+            <option value="">All Models</option>
+        </select>
+
+        <select id="yearFilter">
+            <option value="">All Years</option>
+        </select>
+
+
+        <select id="colorFilter">
+            <option value="">All Colors</option>
+        </select>
+    </div>
+<body>
+	<table id="carsTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Manufacture</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody id="carsTableBody">
+        </tbody>
+	</table>
+
 </body>
 </html>

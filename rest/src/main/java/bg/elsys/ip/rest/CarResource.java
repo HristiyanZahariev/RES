@@ -18,10 +18,12 @@ public class CarResource {
             @QueryParam("manufacture") String manufacturer,
             @QueryParam("model") String model,
             @QueryParam("year") Integer year,
-            @QueryParam("color") String color) {
+            @QueryParam("color") String color,
+            @QueryParam("currentPage") Integer currentPage,
+            @QueryParam("carsPerPage") Integer carsPerPage) {
 
-        return Response.ok(GenerateData.getInstance().filterCars(manufacturer, model, year, color)).build();
-        //return Response.ok(GenerateData.getInstance().getCars()).build();
+            return Response.ok(GenerateData.getInstance().filterCars(manufacturer, model, year, color, currentPage, carsPerPage)).build();
+            //return Response.ok(GenerateData.getInstance().getCars()).build();
     }
 
     @POST
@@ -50,6 +52,26 @@ public class CarResource {
         return Response.ok(GenerateData.getInstance().getAllManufacturersNames()).build();
     }
 
+    @Path("/models")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllDistinctCarModels() {
+        return Response.ok(GenerateData.getInstance().getAllModelNames()).build();
+    }
+
+    @Path("/years")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllDistinctCarYears() {
+        return Response.ok(GenerateData.getInstance().getAllYears()).build();
+    }
+
+    @Path("/colors")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllDistinctColors() {
+        return Response.ok(GenerateData.getInstance().getAllColors()).build();
+    }
 
 
 }
