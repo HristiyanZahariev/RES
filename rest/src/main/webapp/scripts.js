@@ -65,6 +65,7 @@ function registerForm() {
 			success: function(data) {
 				console.log("Yeah");
 				//createCarInTable(data);
+				currPage = currPage - 2;
 			}
 
 		});
