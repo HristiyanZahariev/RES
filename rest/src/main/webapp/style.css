@@ -21,3 +21,16 @@ label {
     text-align: center;
     align-content: center;
 }
+
+#filters {
+    margin: 10px;
+}
+
+#manufactureFilter, #modelFilter, #yearFilter, #colorFilter {
+    margin: 10px;
+    width: 20%;
+    height: 10%;
+    padding: 10px;
+}
+
+

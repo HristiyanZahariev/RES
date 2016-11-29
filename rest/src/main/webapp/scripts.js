@@ -13,7 +13,6 @@ function inputFormToJSON() {
 
 function createCarInTable(car) {
 	var tr = $('<tr>');
-	tr.append('<td>' + car.id + '</td>');
 	tr.append('<td>' + car.manufacture + '</td>');
 	tr.append('<td>' + car.model + '</td>');
 	tr.append('<td>' + car.year + '</td>');
