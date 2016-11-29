@@ -1,27 +1,6 @@
 var carsPerPage = 16;
 var currPage;
 
-// function generateData() {
-//
-// 	$.ajax({
-// 		url: "http://localhost:8080/rest/api/cars",
-// 		type: "GET",
-// 		dataType: "json",
-// 		contentType: "text/plain",
-// 		data: {
-// 			carsPerPage : carsPerPage,
-// 			currentPage : currPage
-// 		},
-// 		success: function(data) {
-// 			console.log(data);
-// 			currPage++;
-// 			$.each(data, function(index){
-// 				createCarInTable(data[index]);
-// 			});
-// 		}
-// 	});
-// }
-
 function inputFormToJSON() {
 	return JSON.stringify({
 		"manufacture": $('#manufacture').val(),
@@ -31,14 +10,6 @@ function inputFormToJSON() {
 	});
 }
 
-// function filterToJSON() {
-// 	return JSON.stringify({
-//         "manufacture" : $('#manufacturersFilter').val(),
-//         "model" : $('#modelFilter').val(),
-//         "year" : $('#yearFilter').val(),
-//         "color" : $('#colorFilter').val()
-// 	});
-// }
 
 function createCarInTable(car) {
 	var tr = $('<tr>');
