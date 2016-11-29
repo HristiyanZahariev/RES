@@ -28,24 +28,24 @@ function removeTable() {
 
 function loadFiltersAndGenerateData() {
 	$.ajax({
-			url: "http://localhost:8080/rest/api/cars",
-			type: "GET",
-			dataType: "json",
-			contentType: "text/plain",
-			data: {
-				carsPerPage : carsPerPage,
-				currentPage : currPage,
-				"manufacture" : $('#manufactureFilter').val(),
-				"model" : $('#modelFilter').val(),
-				"year" : $('#yearFilter').val(),
-				"color" : $('#colorFilter').val()
-			},
-			success: function(data) {
-				currPage++;
-				$.each(data, function(index) {
-					createCarInTable(data[index]);
-				});
-			}
+        url: "http://localhost:8080/rest/api/cars",
+        type: "GET",
+        dataType: "json",
+        contentType: "text/plain",
+        data: {
+            carsPerPage : carsPerPage,
+            currentPage : currPage,
+            "manufacture" : $('#manufactureFilter').val(),
+            "model" : $('#modelFilter').val(),
+            "year" : $('#yearFilter').val(),
+            "color" : $('#colorFilter').val()
+        },
+        success: function(data) {
+            currPage++;
+            $.each(data, function(index) {
+                createCarInTable(data[index]);
+            });
+        }
 		}
 	);
 }
@@ -132,9 +132,12 @@ function getCarColors() {
 $(document).ready(function() {
 	currPage = 1;
 	$(window).scroll(function () {
-		if (($(window).scrollTop() + $(window).height()) >= $('body').height()) {
+
+		if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) { //copi from http://stackoverflow.com/a/9439807/5741287
 			loadFiltersAndGenerateData();
+			console.log(currPage);
 		}
+
 	});
 	registerForm();
 	getCarNames();

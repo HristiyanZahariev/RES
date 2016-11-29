@@ -12,9 +12,8 @@ th, td {
 
 .conteiner {
     padding: 10px;
-    width: 100%;
-    position: center;
-    align-content: center;
+    width: 98%;
+    margin: 10px;
 }
 
 label {
