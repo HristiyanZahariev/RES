@@ -51,7 +51,7 @@ function createCarInTable(car) {
 	$('#carsTableBody').append(tr);
 }
 
-function loadFiltersAndGenerateData() {
+function	 loadFiltersAndGenerateData() {
     //console.log($('#manufacturersFilter').val());
 	$.ajax({
 			url: "http://localhost:8080/rest/api/cars",
@@ -191,9 +191,9 @@ $(document).ready(function() {
 		loadFiltersAndGenerateData();
 	});
 
-	// $('#colorFilter').change(function () {
-	// 	$('#carsTableBody tr').remove();
-	// 	currPage = 1;
-	// 	loadFiltersAndGenerateData();
-	// });
+	$('#colorFilter').change(function () {
+		$('#carsTableBody tr').remove();
+		currPage = 1;
+		loadFiltersAndGenerateData();
+	});
 });

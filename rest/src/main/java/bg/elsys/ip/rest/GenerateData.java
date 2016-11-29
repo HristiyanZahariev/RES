@@ -46,7 +46,6 @@ public class GenerateData {
                 .filter(car -> year == null || car.getYear() == year || ("").equals(year))
                 .filter(car -> car.getColor().equals(color) || "".equals(color) || color == null)
                 .collect(Collectors.toList());
-        System.out.println(carsPerPage);
         return filteredCars.subList(Math.min((currPage-1)*carsPerPage, filteredCars.size()), Math.min(currPage*carsPerPage, filteredCars.size()));
     }
 
