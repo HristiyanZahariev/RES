@@ -16,7 +16,7 @@ import java.util.List;
 @Api("cars")
 @Path("/cars")
 public class CarResource {
-    @ApiOperation(value = "Something...", response = Car.class, responseContainer = "List")
+    @ApiOperation(value = "Get request that returns a list of cars", response = Car.class, responseContainer = "List")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCars(
@@ -30,7 +30,7 @@ public class CarResource {
             return Response.ok(GenerateData.getInstance().filterCars(manufacturer, model, year, color, currentPage, carsPerPage)).build();
             //return Response.ok(GenerateData.getInstance().getCars()).build();
     }
-
+    @ApiOperation(value = "Post", response = Car.class)
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -39,6 +39,7 @@ public class CarResource {
         return Response.ok(car).build();
     }
 
+    @ApiOperation(value = "Get request for a specific car in the list", response = Car.class, responseContainer = "List")
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -50,6 +51,7 @@ public class CarResource {
     }
 
     //If implementing a dropdown menu
+    @ApiOperation(value = "Get request for getting all manufacturers from the list", response = Car.class, responseContainer = "List")
     @Path("/names")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -57,6 +59,7 @@ public class CarResource {
         return Response.ok(GenerateData.getInstance().getAllManufacturersNames()).build();
     }
 
+    @ApiOperation(value = "Get request for getting all models from the list", response = Car.class, responseContainer = "List")
     @Path("/models")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -64,6 +67,7 @@ public class CarResource {
         return Response.ok(GenerateData.getInstance().getAllModelNames()).build();
     }
 
+    @ApiOperation(value = "Get request for getting all years from the list", response = Car.class, responseContainer = "List")
     @Path("/years")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -71,6 +75,8 @@ public class CarResource {
         return Response.ok(GenerateData.getInstance().getAllYears()).build();
     }
 
+
+    @ApiOperation(value = "Get request for getting all colors from the list", response = Car.class, responseContainer = "List")
     @Path("/colors")
     @GET
     @Produces(MediaType.APPLICATION_JSON)

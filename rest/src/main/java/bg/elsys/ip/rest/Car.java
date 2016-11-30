@@ -12,11 +12,14 @@ import java.awt.*;
 public class Car {
 
     @ApiModelProperty(value = "Shows id for every car", example = "1")
-
     private int id;
+    @ApiModelProperty(value = "Show manufacture for every car", example = "Mercedes-Benz")
     private String manufacture;
+    @ApiModelProperty(value = "Shows model of every car", example = "C200")
     private String model;
+    @ApiModelProperty(value = "Shows year of every car", example = "2015")
     private int year;
+    @ApiModelProperty(value = "Shows color of every car", example = "White")
     private String color;
     static int idCounter = 1;
 
