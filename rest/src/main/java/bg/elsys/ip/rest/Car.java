@@ -1,11 +1,17 @@
 package bg.elsys.ip.rest;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.awt.*;
 
 /**
  * Created by hristiyan on 14.11.16.
  */
+@ApiModel
 public class Car {
+
+    @ApiModelProperty(value = "Shows id for every car", example = "1")
 
     private int id;
     private String manufacture;

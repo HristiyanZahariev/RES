@@ -1,5 +1,8 @@
 package bg.elsys.ip.rest;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 import javax.print.attribute.standard.Media;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -10,8 +13,10 @@ import java.util.List;
 /**
  * Created by hristiyan on 14.11.16.
  */
+@Api("cars")
 @Path("/cars")
 public class CarResource {
+    @ApiOperation(value = "Something...", response = Car.class, responseContainer = "List")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCars(
